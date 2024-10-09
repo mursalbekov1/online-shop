@@ -3,12 +3,12 @@ package config
 import (
 	"fmt"
 	"github.com/ilyakaznacheev/cleanenv"
-	"os"
+	"log"
 )
 
 type Config struct {
 	env        string     `yaml:env`
-	HttpServer HttpServer `yaml:"http_server"`
+	HttpServer HttpServer `yaml:"http-server"`
 }
 
 type HttpServer struct {
@@ -17,17 +17,14 @@ type HttpServer struct {
 }
 
 func MustLoad() *Config {
-	configPath := os.Getenv("CONFIG_PATH")
-
-	if configPath == "" {
-		configPath = ".config/config.yaml"
-	}
+	configPath := "config/config.yaml"
 
 	var cfg Config
-
 	if err := cleanenv.ReadConfig(configPath, &cfg); err != nil {
-		fmt.Errorf("error reading config: %v", err)
+		log.Fatalf("error reading config: %v", err)
 	}
+
+	fmt.Printf("Loaded config: %+v\n", cfg) // Вывод для отладки
 
 	return &cfg
 }

@@ -1,10 +1,5 @@
 package models
 
-import (
-	"database/sql"
-	"online-shop/internal/repository/postgres"
-)
-
 type User struct {
 	Id       int    `json:"id"`
 	Name     string `json:"name"`
@@ -21,11 +16,11 @@ type Models struct {
 		Delete(id int) error
 	}
 
-	Users postgres.UserRepository
+	//Users postgres.UserRepository
 }
 
-func NewModels(db *sql.DB) Models {
-	return Models{
-		Users: postgres.UserRepository{DB: db},
-	}
-}
+//func NewModels(db *sql.DB) Models {
+//	return Models{
+//		Users: postgres.UserRepository{DB: db},
+//	}
+//}
