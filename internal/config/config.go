@@ -1,7 +1,6 @@
 package config
 
 import (
-	"fmt"
 	"github.com/ilyakaznacheev/cleanenv"
 	"log"
 )
@@ -23,8 +22,6 @@ func MustLoad() *Config {
 	if err := cleanenv.ReadConfig(configPath, &cfg); err != nil {
 		log.Fatalf("error reading config: %v", err)
 	}
-
-	fmt.Printf("Loaded config: %+v\n", cfg) // Вывод для отладки
 
 	return &cfg
 }

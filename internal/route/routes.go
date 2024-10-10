@@ -10,9 +10,9 @@ import (
 func Router(u *postgres.UserRepository) http.Handler {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
-	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("welcome"))
+	r.Get("/hello", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("hello world!"))
 	})
 
-	return nil
+	return r
 }

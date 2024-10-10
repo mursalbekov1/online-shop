@@ -8,7 +8,7 @@ type User struct {
 }
 
 type Models struct {
-	User interface {
+	Users interface {
 		Create(user *User) error
 		GetById(id int) (*User, error)
 		GetAll() (*[]User, error)
